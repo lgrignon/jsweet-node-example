@@ -26,7 +26,8 @@ Once built:
 > cd build
 > node server/module.js
 ```
-Then, one could browse the chat by accessing http://localhost:1337/ in a browser.
+
+Then, one could browse the chat by accessing [http://localhost:1337/] in a browser.
 
 ## Prerequisites
 

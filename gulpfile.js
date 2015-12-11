@@ -24,7 +24,6 @@ gulp.task('buildClientAndServer', ['buildServer'], shell.task([
 //VENDORS
 gulp.task('bundleJsVendors', function() {
     return gulp.src([
-         'bower_components/es6-shim/es6-shim.min.js',
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/hammerjs/hammer.min.js',
         'bower_components/angular/angular.js',

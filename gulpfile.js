@@ -55,9 +55,6 @@ gulp.task('bundleJsVendors', function() {
 });
 
 gulp.task('bundleCss', function () {
-	
-	throw 'RRRR test';
-	
     return gulp.src([
         'bower_components/foundation/css/foundation.css',
         'bower_components/angular-material/angular-material.css',

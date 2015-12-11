@@ -1,0 +1,6 @@
+/target/
+/node_modules/
+/bower_components/
+/build/
+/.jsweet/
+/.ts/

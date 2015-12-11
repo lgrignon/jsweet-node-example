@@ -8,6 +8,15 @@ var gulp     = require('gulp'),
     plumber      = require("gulp-plumber"),
     shell        = require('gulp-shell');
 
+function onError(error) {
+	console.log('FATAL ERROR: ' + error);
+	console.log(error);
+	
+	console.log('----- EXITING -----');
+	
+	process.exit(1);
+}
+
 gulp.task('buildServer', shell.task(
 	'mvn clean generate-sources -P server'
 ));
@@ -16,7 +25,7 @@ gulp.task('buildClient', shell.task(
 	'mvn clean generate-sources -P client'
 ));
 
-gulp.task('buildClientAndServer', ['buildServer'], shell.task([
+gulp.task('buildClientAndServer', shell.task([
 	'mvn clean generate-sources -P server',
 	'mvn clean generate-sources -P client'
 ]));
@@ -41,7 +50,8 @@ gulp.task('bundleJsVendors', function() {
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('build/js/'))
-        .pipe(notify('JavaScript Vendors ready !'));
+        .pipe(notify('JavaScript Vendors ready !'))
+        .on('error', onError);
 });
 
 gulp.task('bundleCss', function () {
@@ -54,7 +64,8 @@ gulp.task('bundleCss', function () {
     .pipe(minifyCSS())
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest('build/css'))
-    .pipe(notify('Css Vendors ready !'));
+    .pipe(notify('Css Vendors ready !'))
+    .on('error', onError);
 });
 
 gulp.task('jade', function() {
@@ -63,21 +74,24 @@ gulp.task('jade', function() {
      ])
      .pipe(jade())
      .pipe(gulp.dest('build/'))
-     .pipe(notify('jaded !'));
+     .pipe(notify('jaded !'))
+     .on('error', onError);
 });
 
 gulp.task('views', function() {
 	return gulp.src([
 	    'views/**/*',
      ])
-     .pipe(gulp.dest('build/views'));
+     .pipe(gulp.dest('build/views'))
+     .on('error', onError);
 });
 
 gulp.task('images', function() {
 	return gulp.src([
 	    'img/**/*',
      ])
-     .pipe(gulp.dest('build/img'));
+     .pipe(gulp.dest('build/img'))
+     .on('error', onError);
 });
 
 

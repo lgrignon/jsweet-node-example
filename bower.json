@@ -1,0 +1,32 @@
+{
+  "name": "jsweet-node-example",
+  "version": "1.0.0",
+  "authors": [
+    "Louis Grignon <louis.grignon@gmail.com>"
+  ],
+  "description": "The classic Socket.IO example: a simple instant messenger - all along with the JSweet magic",
+  "moduleType": [
+    "es6",
+    "commonjs"
+  ],
+  "keywords": [
+    "nodejs",
+    "angular",
+    "typescript",
+    "socket.io"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "devDependencies": {
+    "angular": "~1.3.10",
+    "angular-resource": "~1.3.10",
+    "jquery": "~2.1.3",
+    "angular-route": "~1.3.10",
+    "angular-material": "~0.7.0",
+    "ng-socket-io": "~0.2.0"
+  },
+  "dependencies": {
+    "foundation": "~5.5.3",
+    "es6-shim": "~0.33.9"
+  }
+}

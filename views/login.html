@@ -1,0 +1,25 @@
+<div layout="row" layout-align="center center" style="position:absolute;top:0;left:0;right:0;bottom:0;">
+    <form novalidate action="" id="loginForm" layout="column" layout-margin flex="70">
+
+        <md-input-container>
+            <label>Pseudo</label>
+            <input name="login" id="username" required>
+        </md-input-container>
+        
+        <md-input-container>
+            <label>Password</label>
+            <input type="password" name="password" id="password" required>
+        </md-input-container>
+        
+		<md-button ng-submit class="md-raised md-primary">
+			Login
+		</md-button>
+        
+        <br />
+        <div style="color: gray; font-style: italic; font-size: 1.2em;">
+	    	<span id="usersCount">0</span> users connected
+	    </div>
+    </form>
+       
+   
+</div>

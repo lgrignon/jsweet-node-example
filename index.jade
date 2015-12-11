@@ -1,0 +1,15 @@
+doctype html
+html(lang="fr", ng-app="app")
+    head
+        title="Angular / Node.js chat"
+        meta(name="viewport", content="initial-scale=1, maximum-scale=1, user-scalable=no")
+        link(rel="stylesheet", href="css/bundle.css")
+		link(rel="icon", type="image/png", href="/img/favicon.ico", sizes="16x16")
+		link(rel="shortcut icon", href="/img/favicon.ico/favicon.ico")
+
+    body
+        .container(ng-view, layout="column", id="app")
+
+        script(type='text/javascript' src='js/vendors.min.js')
+        script(type='text/javascript' src='js/bundles/bundle-app.js')
+        

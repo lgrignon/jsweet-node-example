@@ -1,0 +1,7 @@
+compiler.debugMode=java
+compiler.javascriptFolder=js
+compiler.typescriptFolder=.generated
+eclipse.preferences.version=1
+plugin.extractCoreTsdefsFromJars=false
+plugin.extractTsdefsFromJars=true
+plugin.forceJavaCtApi=false

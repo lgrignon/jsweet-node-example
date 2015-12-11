@@ -1,0 +1,33 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span class="md-flex">Instant Messenger</span>&nbsp;-&nbsp;
+        Powered by <img style="margin-left: 5px;width: 40px;" title="JSweet" src="img/logo.png" />
+        
+        <div class="connectedCount" flex="grow">
+	    	<span id="usersCount">0</span> users connected
+	    </div>
+    </div>
+</md-toolbar>
+<md-content id="messageList" >
+    <md-list>
+    	
+        <md-item ng-repeat="message in ctrl.messages">
+            <md-item-content>
+                <div class="md-tile-left">
+                    <img ng-src="http://lorempixel.com/45/45/people?id={{message.user.id}}" alt="" class="face">
+                    
+                    {{message.user.name}}
+                </div>
+                <div class="md-tile-content message">
+                    {{message.text}}
+                </div>
+            </md-item-content>
+            <md-divider inset></md-divider>
+        </md-item>
+    </md-list>
+</md-content>
+<form action="" id="messageForm">
+    <md-input-container style="padding-bottom: 10px;">
+        <input id="newMsg" name="message" type="text" placeholder="Type a message !"/>
+    </md-input-container>
+</form>

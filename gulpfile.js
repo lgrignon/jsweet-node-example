@@ -36,7 +36,7 @@ gulp.task('bundleJsVendors', function() {
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/hammerjs/hammer.min.js',
         'bower_components/angular/angular.js',
-        'node_modules/socket.io/node_modules/socket.io-client/socket.io.js',
+        'node_modules/socket.io-client/socket.io.js',
         'bower_components/angular-route/angular-route.js',
         'bower_components/angular-aria/angular-aria.js',
         'bower_components/angular-animate/angular-animate.js',

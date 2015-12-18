@@ -1,12 +1,14 @@
 # JSweet Node.js / Socket.IO server + Angular web client example
 
+![JSweet logo](http://www.jsweet.org/wp-content/logos/powered-by-jsweet-simple.svg)
+
 The classic Socket.IO example: a simple instant messenger. Server is spawned by Node.js and Web UI is powered by Angular. Both are linked together by Socket.IO
 
 Find more info about this example on the original tutorial by following this link: http://socket.io/get-started/chat/
 
 All these example are written in Java using the JSweet APIs (candies). They are then transpiled to JavaScript by the JSweet transpiler.
 
-### Try it [here](http://examples.jsweet.org:1337){:target="_blank"}
+Try it [here](http://examples.jsweet.org:1337){:target="_blank"}
 
 ## Build it
 Just build it using Gulp:

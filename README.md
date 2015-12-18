@@ -6,7 +6,7 @@ Find more info about this example on the original tutorial by following this lin
 
 All these example are written in Java using the JSweet APIs (candies). They are then transpiled to JavaScript by the JSweet transpiler.
 
-Try it [here](http://examples.jsweet.org:1337)
+### Try it [here](http://examples.jsweet.org:1337){:target="_blank"}
 
 ## Build it
 Just build it using Gulp:
@@ -14,8 +14,8 @@ Just build it using Gulp:
 ```
 > git clone https://github.com/lgrignon/jsweet-node-example.git
 > cd jsweet-node-example
-> bower install
 > npm install
+> bower install
 > gulp full
 ```
 

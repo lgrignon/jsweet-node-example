@@ -8,7 +8,7 @@ Find more info about this example on the original tutorial by following this lin
 
 All these example are written in Java using the JSweet APIs (candies). They are then transpiled to JavaScript by the JSweet transpiler.
 
-Try it [here](http://examples.jsweet.org:1337){:target="_blank"}
+###Try it [here](http://examples.jsweet.org:1337 =120x40)
 
 ## Build it
 Just build it using Gulp:

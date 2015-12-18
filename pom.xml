@@ -36,7 +36,7 @@
 							<outDir>build/js</outDir>
 							<targetVersion>ES5</targetVersion>
 							<module>commonjs</module>
-							<verbose>true</verbose>
+							<verbose>false</verbose>
 							<includes>
 								<include>**/app/**/*.java</include>
 								<include>**/model/*.java</include>
@@ -67,6 +67,7 @@
 						<artifactId>jsweet-maven-plugin</artifactId>
 						<version>1.0.0-SNAPSHOT</version>
 						<configuration>
+							<verbose>false</verbose>
 							<outDir>build</outDir>
 							<module>commonjs</module>
 							<targetVersion>ES5</targetVersion>

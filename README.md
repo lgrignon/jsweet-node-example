@@ -1,6 +1,6 @@
 # JSweet Node.js / Socket.IO server + Angular web client example
 
-![JSweet logo](http://www.jsweet.org/wp-content/logos/powered-by-jsweet-simple.svg=120x40)
+<img src="http://www.jsweet.org/wp-content/logos/powered-by-jsweet-simple.svg" width="150" alt="JSweet logo">
 
 The classic Socket.IO example: a simple instant messenger. Server is spawned by Node.js and Web UI is powered by Angular. Both are linked together by Socket.IO
 

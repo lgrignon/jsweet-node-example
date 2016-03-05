@@ -39,7 +39,7 @@ public class LoginController {
 	LoginController(Socket socket, ILocationService $location) {
 		this.socket = socket;
 		this.$location = $location;
-		
+
 		this.init();
 	}
 
@@ -48,8 +48,7 @@ public class LoginController {
 		console.log("initializing LoginController - connected=", this.socket.connected, this.socket);
 		$("#loginForm").submit(this::attemptLogin);
 
-		this.socket.on("newuser", function((User user, Number usersCount) 
-				-> this.refreshCount(usersCount) ));
+		this.socket.on("newuser", function((User user, Number usersCount) -> this.refreshCount(usersCount)));
 
 		Function<User, Void> onUserLogged = this::welcomeUser;
 		this.socket.on("login:success", function(onUserLogged));
@@ -57,21 +56,25 @@ public class LoginController {
 		this.socket.on("login:error", function(this::refuseLogin));
 
 		$("#username").focus();
-		
+
 		console.log("LoginController initialized");
 	}
 
-	private Void attemptLogin(JQueryEventObject event) {
+	public Void attemptLogin(JQueryEventObject event) {
 		console.log("attemptLogin");
-		
-        event.preventDefault();
-        this.socket.emit("login:attempt", new jsweet.lang.Object() { {
-        	$set("name", $("#username").val());
-        	$set("password", $("#password").val());
-        }});
-        
-        return null;
-    }
+
+		if (event != null) {
+			event.preventDefault();
+			this.socket.emit("login:attempt", new jsweet.lang.Object() {
+				{
+					$set("name", $("#username").val());
+					$set("password", $("#password").val());
+				}
+			});
+		}
+
+		return null;
+	}
 
 	private Void refreshCount(Number usersCount) {
 		$("#usersCount").text("" + usersCount);

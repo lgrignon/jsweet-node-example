@@ -30,7 +30,6 @@ import model.Message;
 import model.User;
 import def.angular_material.ng.material.ISimpleToastPreset;
 import def.angular_material.ng.material.IToastService;
-import def.angularjs.ng.IPromise.SuccessCallback;
 import def.angularjs.ng.IScope;
 import def.jquery.JQueryEventObject;
 import def.socket_io.socketio.Socket;
@@ -143,13 +142,13 @@ public class ChatController extends AbstractController {
 	private Void onUserConnected(User user, Number connectedCount) {
 
 		ISimpleToastPreset toast = $mdToast.simple() //
-				.content(user.name + " is connected") //
+				.textContent(user.name + " is connected") //
 				.action("x") //
 				.highlightAction(true) //
 				.position("bottom right");
 
 		$mdToast.show(toast) //
-				.then((SuccessCallback) (response) -> {
+				.thenSuccessCallbackFunction((response) -> {
 					if (response == "x") {
 						$mdToast.hide();
 					}
@@ -164,13 +163,13 @@ public class ChatController extends AbstractController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Void onUserDisconnected(User user, Number connectedCount) {
 		ISimpleToastPreset toast = $mdToast.simple() //
-				.content(user.name + " left") //
+				.textContent(user.name + " left") //
 				.action("x") //
 				.highlightAction(true) //
 				.position("bottom right");
 
 		$mdToast.show(toast) //
-				.then((SuccessCallback) (response) -> {
+				.thenSuccessCallbackFunction((response) -> {
 					if (response == "x") {
 						$mdToast.hide();
 					}

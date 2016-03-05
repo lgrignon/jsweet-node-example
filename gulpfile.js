@@ -41,7 +41,6 @@ gulp.task('bundleJsVendors', function() {
         'bower_components/angular-aria/angular-aria.js',
         'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-material/angular-material.js',
-        'bower_components/angular-socket-io/angular-socket-io.js',
         'bower_components/ng-socket-io/ng-socket-io.js',
     ])
 
@@ -95,4 +94,5 @@ gulp.task('images', function() {
 });
 
 
-gulp.task('full', ['buildClientAndServer', 'jade', 'bundleJsVendors', 'bundleCss', 'views', 'images']);
+gulp.task('static', ['jade', 'bundleJsVendors', 'bundleCss', 'views', 'images']);
+

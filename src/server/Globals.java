@@ -35,6 +35,7 @@ import static jsweet.util.StringTypes.connect;
 import def.body_parser.body_parser.OptionsDto;
 import def.errorhandler.errorhandler.Options;
 import def.express.express.Express;
+import def.express.express.NextFunction;
 import def.express.express.Request;
 import def.express.express.RequestHandler;
 import def.express.express.Response;
@@ -44,7 +45,6 @@ import def.node.http.ServerResponse;
 import def.socket_io.socketio.Socket;
 import jsweet.lang.Array;
 import jsweet.lang.Date;
-import jsweet.lang.Function;
 import jsweet.lang.Interface;
 import jsweet.lang.Math;
 import jsweet.lang.Object;
@@ -131,7 +131,7 @@ public class Globals {
 
 		// ROUTING
 		// ===========================
-		app.get.apply("/", (Request req, Response res, Function next) -> {
+		app.get.apply("/", (Request req, Response res, NextFunction next) -> {
 			console.log("request on /");
 			res.render("index", new Object() {
 				{

@@ -4,3 +4,5 @@
 /build/
 /.jsweet/
 /.ts/
+.generated
+js

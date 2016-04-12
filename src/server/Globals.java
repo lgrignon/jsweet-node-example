@@ -34,11 +34,11 @@ import static jsweet.util.StringTypes.connect;
 
 import def.body_parser.body_parser.OptionsDto;
 import def.errorhandler.errorhandler.Options;
-import def.express.express.Express;
-import def.express.express.NextFunction;
-import def.express.express.Request;
+import def.express_serve_static_core.express_serve_static_core.NextFunction;
+import def.express_serve_static_core.express_serve_static_core.Request;
 import def.express.express.RequestHandler;
-import def.express.express.Response;
+import def.express_serve_static_core.express_serve_static_core.Response;
+import def.express_serve_static_core.express_serve_static_core.Express;
 import def.node.http.IncomingMessage;
 import def.node.http.Server;
 import def.node.http.ServerResponse;

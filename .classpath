@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="lib" path="C:/Users/idcapture/dev/workspace-jsw/jsweet-node-example/.jsweet/candies/processed" sourcepath="C:/Users/idcapture/dev/workspace-jsw/jsweet-node-example/.jsweet/candies/src"/>
-	<classpathentry kind="lib" path=".jsweet/candies/processed" sourcepath=".jsweet/candies/src"/>
 	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
 		<attributes>
 			<attribute name="optional" value="true"/>

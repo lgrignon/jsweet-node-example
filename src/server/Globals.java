@@ -83,7 +83,7 @@ abstract class SocketRequest {
 public class Globals {
 
 	public static void main(String[] args) {
-
+		
 		console.log("running server");
 
 		Express app = express();

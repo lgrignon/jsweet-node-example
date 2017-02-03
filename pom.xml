@@ -32,10 +32,9 @@
 						<version>1.1.0-SNAPSHOT</version>
 						<configuration>
 							<bundle>true</bundle>
-							<bundlesDirectory>build/js/bundles</bundlesDirectory>
 							<outDir>build/js</outDir>
 							<targetVersion>ES5</targetVersion>
-							<module>commonjs</module> 	
+							<module>none</module> 	
 							<verbose>true</verbose>
 							<includes>
 								<include>**/app/**/*.java</include>

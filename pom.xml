@@ -34,7 +34,6 @@
 							<bundle>true</bundle>
 							<outDir>build/js</outDir>
 							<targetVersion>ES5</targetVersion>
-							<module>none</module> 	
 							<verbose>true</verbose>
 							<includes>
 								<include>**/app/**/*.java</include>

@@ -34,7 +34,6 @@ import static jsweet.util.StringTypes.connect;
 
 import def.body_parser.body_parser.OptionsDto;
 import def.errorhandler.errorhandler.Options;
-import def.express.express.NextFunction;
 import def.express.express.Request;
 import def.express.express.RequestHandler;
 import def.express.express.Response;
@@ -83,7 +82,7 @@ abstract class SocketRequest {
 public class Globals {
 
 	public static void main(String[] args) {
-
+		
 		console.log("running server");
 
 		Express app = express();

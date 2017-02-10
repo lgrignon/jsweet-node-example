@@ -18,36 +18,37 @@ package server;
 import static def.body_parser.body_parser.Globals.json;
 import static def.body_parser.body_parser.Globals.urlencoded;
 import static def.errorhandler.Globals.errorhandler;
-import static def.express.Globals.express;
-import static def.express.express.Globals.Static;
+import static def.express.Globals.express_lib_express;
+import static def.express.Globals.express_serve_static;
+import static def.js.Globals.console;
 import static def.node.Globals.__dirname;
 import static def.node.Globals.process;
 import static def.node.http.Globals.createServer;
 import static def.socket_io.Globals.socket_io;
-import static jsweet.dom.Globals.console;
+import static def.socket_io.StringTypes.connect;
 import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.number;
 import static jsweet.util.Globals.object;
-import static jsweet.util.Globals.string;
+import static jsweet.util.Globals.any;
 import static jsweet.util.Globals.union;
-import static jsweet.util.StringTypes.connect;
 
 import def.body_parser.body_parser.OptionsDto;
 import def.errorhandler.errorhandler.Options;
-import def.express.express.Express;
-import def.express.express.NextFunction;
-import def.express.express.Request;
-import def.express.express.RequestHandler;
-import def.express.express.Response;
+import def.express.express_lib_application.Application;
+import def.express.express_lib_express.Express;
+import def.express.express_lib_request.Request;
+import def.express.express_lib_response.Response;
+import def.express.express_lib_response.Response.Locals;
+import def.express.express_lib_router_index.NextFunction;
+import def.express.express_lib_router_index.RequestHandler;
+import def.js.Array;
+import def.js.Date;
+import def.js.Object;
 import def.node.http.IncomingMessage;
 import def.node.http.Server;
 import def.node.http.ServerResponse;
 import def.socket_io.socketio.Socket;
-import jsweet.lang.Array;
-import jsweet.lang.Date;
 import jsweet.lang.Interface;
-import jsweet.lang.Math;
-import jsweet.lang.Object;
 import model.Message;
 import model.User;
 
@@ -86,7 +87,8 @@ public class Globals {
 
 		console.log("running server");
 
-		Express app = express();
+		Application app = express_lib_express();
+		Express express = express_lib_express;
 
 		// Configuration
 		app.set("views", __dirname + "/../");
@@ -99,7 +101,7 @@ public class Globals {
 		app.use(json());
 		// the URL throught which you want to access to you staticcontent
 		// where your static content is located in your filesystem
-		app.use("/", (RequestHandler) Static(string(__dirname + "/../")));
+		app.use("/", (RequestHandler) express_serve_static(__dirname + "/../"));
 
 		console.log("express app ", app, " dirname=" + __dirname);
 
@@ -131,9 +133,9 @@ public class Globals {
 
 		// ROUTING
 		// ===========================
-		app.get.apply("/", (Request req, Response res, NextFunction next) -> {
+		app.get("/", (Request req, Response res, NextFunction next) -> {
 			console.log("request on /");
-			res.render("index", new Object() {
+			res.render("index", new Locals() {
 				{
 					$set("title", "Express");
 				}
@@ -143,18 +145,19 @@ public class Globals {
 
 		// CREATE SERVER & LISTEN
 		// ===========================
-		console.log("starting server on port: " + app.get.apply("port"));
+
+		console.log("starting server on port: " + app.get("port"));
 		Server server = createServer((IncomingMessage msg, ServerResponse resp) -> {
 			console.log("server received request - url=" + msg.url + " method=" + msg.method);
-			app.apply((Request) msg, (Response) resp, null);
+			RequestHandler delegate = any(app);
+			delegate.apply(any(msg), any(resp), null);
 		});
 
-		server.listen(app.get.apply("port"), function(() -> {
-			console.log("server listening on port [" + app.get.apply("port") + "]");
+		server.listen(app.get("port"), function(() -> {
+			console.log("server listening on port [" + app.get("port") + "]");
 		}));
 
-		def.socket_io.socketio.Server ioServer //
-		= socket_io.listen.apply(server);
+		def.socket_io.socketio.Server ioServer = socket_io.listen.apply(server);
 
 		Object users = new Object();
 		Array<Message> messages = new Array<>();
@@ -180,7 +183,7 @@ public class Globals {
 
 				User identity = new User(user.name, ip, guid());
 				users.$set(ip, identity);
-				ioServer.sockets.emit("newuser", identity, Object.keys(users).length);
+				ioServer.emit("newuser", identity, Object.keys(users).length);
 				socket.emit("login:success", identity);
 			}));
 
@@ -211,7 +214,7 @@ public class Globals {
 
 				users.$delete(identity.id);
 				console.info("disconnection");
-				ioServer.sockets.emit("userdisconnect", user, Object.keys(users).length);
+				ioServer.emit("userdisconnect", user, Object.keys(users).length);
 
 				return null;
 			}));
@@ -225,7 +228,7 @@ public class Globals {
 				if (messages.length > MAX_MESSAGES_BUFFER) {
 					messages.shift();
 				}
-				ioServer.sockets.emit("newmsg", message);
+				ioServer.emit("newmsg", message);
 			}));
 		});
 	}

@@ -43,7 +43,7 @@ gulp.task('bundleJsVendors', function() {
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/hammerjs/hammer.min.js',
         'bower_components/angular/angular.js',
-        'node_modules/socket.io-client/socket.io.js',
+        'node_modules/socket.io-client/dist/socket.io.js',
         'bower_components/angular-route/angular-route.js',
         'bower_components/angular-aria/angular-aria.js',
         'bower_components/angular-animate/angular-animate.js',
@@ -51,12 +51,11 @@ gulp.task('bundleJsVendors', function() {
         'bower_components/ng-socket-io/ng-socket-io.js',
     ])
 
-        .pipe(plumber())
+//        .pipe(plumber())
         .pipe(concat('vendors.js'))
-//        .pipe(uglify())
+        .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('build/js/'))
-        .pipe(notify('JavaScript Vendors ready !'))
         .on('error', onError);
 });
 
@@ -70,7 +69,6 @@ gulp.task('bundleCss', function () {
     .pipe(minifyCSS())
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest('build/css'))
-    .pipe(notify('Css Vendors ready !'))
     .on('error', onError);
 });
 
@@ -80,7 +78,6 @@ gulp.task('jade', function() {
      ])
      .pipe(jade())
      .pipe(gulp.dest('build/'))
-     .pipe(notify('jaded !'))
      .on('error', onError);
 });
 

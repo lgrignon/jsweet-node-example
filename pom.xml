@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jsweet</groupId>
 	<artifactId>jsweet-node-example</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<name>JSweet node example</name>
 	<description>A node server and a client HTML app with a js bundle - all along with the JSweet magic</description>
 	<developers>

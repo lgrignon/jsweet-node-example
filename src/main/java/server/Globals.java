@@ -17,25 +17,24 @@ package server;
 
 import static def.body_parser.body_parser.Globals.json;
 import static def.body_parser.body_parser.Globals.urlencoded;
+import static def.dom.Globals.console;
 import static def.errorhandler.Globals.errorhandler;
 import static def.express.Globals.express_lib_express;
 import static def.express.Globals.express_serve_static;
-import static def.dom.Globals.console;
 import static def.node.Globals.__dirname;
 import static def.node.Globals.process;
 import static def.node.http.Globals.createServer;
 import static def.socket_io.Globals.socket_io;
 import static def.socket_io.StringTypes.connect;
+import static jsweet.util.Globals.any;
 import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.number;
 import static jsweet.util.Globals.object;
-import static jsweet.util.Globals.any;
 import static jsweet.util.Globals.union;
 
 import def.body_parser.body_parser.OptionsDto;
 import def.errorhandler.errorhandler.Options;
 import def.express.express_lib_application.Application;
-import def.express.express_lib_express.Express;
 import def.express.express_lib_request.Request;
 import def.express.express_lib_response.Response;
 import def.express.express_lib_response.Response.Locals;
@@ -88,7 +87,6 @@ public class Globals {
 		console.log("running server");
 
 		Application app = express_lib_express();
-		Express express = express_lib_express;
 
 		// Configuration
 		app.set("views", __dirname + "/../");

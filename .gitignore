@@ -6,3 +6,4 @@
 /.ts/
 .generated
 js
+/bin/

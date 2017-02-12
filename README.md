@@ -22,7 +22,8 @@ Just build it using Gulp:
 > gulp static
 ```
 
-`gulp full` executes behind the scene `gulp buildServer` and `gulp buildClient` which runs respectively `mvn generate-sources -P server` and `mvn generate-sources -P client`. Other less significants tasks are launched, such as jade transpilation, resources copy, bower libs concat & minify.
+`gulp buildClientAndServer` executes behind the scene `gulp buildServer` and `gulp buildClient`, which runs respectively `mvn generate-sources -P server` and `mvn generate-sources -P client`.
+`gulp static` launches static resources generation such as jade transpilation, resources copy, bower libs concat & minify.
 The output folder is `build`.
 
 ## Run it

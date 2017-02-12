@@ -6,7 +6,8 @@ var gulp     = require('gulp'),
     notify       = require("gulp-notify"),
     jade         = require("gulp-jade"),
     plumber      = require("gulp-plumber"),
-    shell        = require('gulp-shell');
+    shell        = require('gulp-shell'),
+    runSequence  = require('run-sequence');
 
 function onError(error) {
 	console.log('FATAL ERROR: ' + error);
@@ -17,17 +18,23 @@ function onError(error) {
 	process.exit(1);
 }
 
+gulp.task('clean', shell.task([
+	'mvn clean -P server',
+	'mvn clean -P client'
+]));
+
+
 gulp.task('buildServer', shell.task(
-	'mvn clean generate-sources -P server'
+	'mvn generate-sources -P server'
 ));
 
 gulp.task('buildClient', shell.task(
-	'mvn clean generate-sources -P client'
+	'mvn generate-sources -P client'
 ));
 
 gulp.task('buildClientAndServer', shell.task([
-	'mvn clean generate-sources -P server',
-	'mvn clean generate-sources -P client'
+	'mvn generate-sources -P server',
+	'mvn generate-sources -P client'
 ]));
 
 //VENDORS
@@ -36,7 +43,7 @@ gulp.task('bundleJsVendors', function() {
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/hammerjs/hammer.min.js',
         'bower_components/angular/angular.js',
-        'node_modules/socket.io-client/socket.io.js',
+        'node_modules/socket.io-client/dist/socket.io.js',
         'bower_components/angular-route/angular-route.js',
         'bower_components/angular-aria/angular-aria.js',
         'bower_components/angular-animate/angular-animate.js',
@@ -44,12 +51,10 @@ gulp.task('bundleJsVendors', function() {
         'bower_components/ng-socket-io/ng-socket-io.js',
     ])
 
-        .pipe(plumber())
         .pipe(concat('vendors.js'))
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('build/js/'))
-        .pipe(notify('JavaScript Vendors ready !'))
         .on('error', onError);
 });
 
@@ -59,11 +64,9 @@ gulp.task('bundleCss', function () {
         'bower_components/angular-material/angular-material.css',
 		'css/style.css',
     ])
-    .pipe(plumber())
     .pipe(minifyCSS())
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest('build/css'))
-    .pipe(notify('Css Vendors ready !'))
     .on('error', onError);
 });
 
@@ -73,7 +76,6 @@ gulp.task('jade', function() {
      ])
      .pipe(jade())
      .pipe(gulp.dest('build/'))
-     .pipe(notify('jaded !'))
      .on('error', onError);
 });
 
@@ -96,3 +98,6 @@ gulp.task('images', function() {
 
 gulp.task('static', ['jade', 'bundleJsVendors', 'bundleCss', 'views', 'images']);
 
+gulp.task('all', ['clean'], function (cb) {
+    runSequence(['buildClientAndServer', 'static'], cb);
+});

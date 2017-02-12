@@ -15,12 +15,17 @@
  */
 package app.directives;
 
+import static jsweet.util.Globals.union;
+
 import def.angularjs.ng.IAttributes;
 import def.angularjs.ng.IAugmentedJQuery;
 import def.angularjs.ng.IDirective;
 import def.angularjs.ng.IDirectiveLinkFn;
+import def.angularjs.ng.IDirectivePrePost;
 import def.angularjs.ng.IScope;
 import def.angularjs.ng.ITranscludeFunction;
+import def.js.Function;
+import jsweet.util.union.Union;
 
 /**
  * Demo directive, unused for now
@@ -30,18 +35,23 @@ import def.angularjs.ng.ITranscludeFunction;
  */
 public class MyDirective extends IDirective {
 
-	String template;
+	Union<String, Function> template;
 	String restrict;
-	IDirectiveLinkFn link;
+	Union<IDirectiveLinkFn, IDirectivePrePost> link;
 
 	public MyDirective() {
-		template = "<div></div>";
+		template = union("<div></div>");
 		restrict = "E";
 
-		link = this::linkElement;
+		link = union((IDirectiveLinkFn) this::linkElement);
 	}
 
 	public void linkElement(IScope scope, IAugmentedJQuery element, IAttributes instanceAttributes, Object controller, ITranscludeFunction transclude) {
 		element.text("this is the MyDirective directive");
+	}
+	
+	@Override
+	public IDirectivePrePost compile(IAugmentedJQuery templateElement, IAttributes templateAttributes, ITranscludeFunction transclude) {
+		return null;
 	}
 }

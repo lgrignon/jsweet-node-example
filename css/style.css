@@ -44,3 +44,13 @@
 	margin: 0;
 	height: 30px;
 }
+
+#messageForm input {
+	background-color: rgba(110,134,182,.2);
+}
+
+#messageForm label {
+	color: rgb(50,50,50);
+	font-style: italic;
+}
+

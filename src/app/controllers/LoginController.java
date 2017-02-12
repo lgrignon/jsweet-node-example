@@ -16,7 +16,8 @@
 package app.controllers;
 
 import static def.jquery.Globals.$;
-import static jsweet.dom.Globals.console;
+import static def.js.Globals.console;
+import static jsweet.util.Globals.$map;
 import static jsweet.util.Globals.function;
 
 import java.util.function.Function;
@@ -65,12 +66,10 @@ public class LoginController {
 
 		if (event != null) {
 			event.preventDefault();
-			this.socket.emit("login:attempt", new jsweet.lang.Object() {
-				{
-					$set("name", $("#username").val());
-					$set("password", $("#password").val());
-				}
-			});
+			this.socket.emit("login:attempt",
+					$map( //
+							"name", $("#username").val(), //
+							"password", $("#password").val()));
 		}
 
 		return null;

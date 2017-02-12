@@ -16,7 +16,7 @@
 package app;
 
 import static def.angularjs.Globals.angular;
-import static jsweet.dom.Globals.console;
+import static def.js.Globals.console;
 import static jsweet.util.Globals.array;
 import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.union;
@@ -29,7 +29,7 @@ import app.directives.MyDirective;
 import app.services.MessageService;
 import def.angularjs.ng.route.IRoute;
 import def.angularjs.ng.route.IRouteProvider;
-import jsweet.lang.Array;
+import def.js.Array;
 
 /**
  * The following script initializes angular module and configures routing

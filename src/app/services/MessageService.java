@@ -15,7 +15,7 @@
  */
 package app.services;
 
-import static jsweet.dom.Globals.console;
+import static def.js.Globals.console;
 
 import def.socket_io.socketio.Socket;
 import model.Message;

@@ -16,20 +16,20 @@
 package app.controllers;
 
 import static def.jquery.Globals.$;
-import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.localStorage;
+import static def.js.Globals.console;
+import static def.js.Globals.localStorage;
 import static jsweet.util.Globals.function;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import app.services.MessageService;
-import jsweet.lang.Array;
-import jsweet.lang.JSON;
+import def.js.Array;
+import def.js.JSON;
 import model.Message;
 import model.User;
-import def.angular_material.ng.material.ISimpleToastPreset;
-import def.angular_material.ng.material.IToastService;
+import def.angular_material.angular.material.ISimpleToastPreset;
+import def.angular_material.angular.material.IToastService;
 import def.angularjs.ng.IScope;
 import def.jquery.JQueryEventObject;
 import def.socket_io.socketio.Socket;
@@ -113,7 +113,7 @@ public class ChatController extends AbstractController {
 	private Void initMessages(Array<Message> messages) {
 		console.log("last Messages", messages);
 
-		messages.forEach(message -> {
+		messages.forEach((message, __, ___) -> {
 			onMessageReceived(new Message(message.user, message.text));
 		});
 
@@ -138,7 +138,6 @@ public class ChatController extends AbstractController {
 		return null;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Void onUserConnected(User user, Number connectedCount) {
 
 		ISimpleToastPreset toast = $mdToast.simple() //
@@ -160,7 +159,6 @@ public class ChatController extends AbstractController {
 		return null;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Void onUserDisconnected(User user, Number connectedCount) {
 		ISimpleToastPreset toast = $mdToast.simple() //
 				.textContent(user.name + " left") //

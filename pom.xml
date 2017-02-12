@@ -29,10 +29,11 @@
 					<plugin>
 						<groupId>org.jsweet</groupId>
 						<artifactId>jsweet-maven-plugin</artifactId>
-						<version>1.1.0-SNAPSHOT</version>
+						<version>2.0.0-SNAPSHOT</version>
 						<configuration>
 							<bundle>true</bundle>
 							<outDir>build/js</outDir>
+							<tsOut>target/ts/client</tsOut>
 							<targetVersion>ES5</targetVersion>
 							<verbose>true</verbose>
 							<includes>
@@ -70,12 +71,13 @@
 					<plugin>
 						<groupId>org.jsweet</groupId>
 						<artifactId>jsweet-maven-plugin</artifactId>
-						<version>1.1.0-SNAPSHOT</version>
+						<version>2.0.0-SNAPSHOT</version>
 						<configuration>
 							<verbose>true</verbose>
 							<outDir>build</outDir>
-							<module>commonjs</module>
+							<tsOut>target/ts/server</tsOut>
 							<targetVersion>ES5</targetVersion>
+							<module>commonjs</module>
 							<includes>
 								<include>**/*.java</include>
 							</includes>
@@ -156,81 +158,51 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.candies.ext</groupId>
 			<artifactId>angular</artifactId>
 			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.candies.ext</groupId>
 			<artifactId>angular-route</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.candies.ext</groupId>
+			<artifactId>node</artifactId>
+			<version>7.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsweet.candies.ext</groupId>
 			<artifactId>express</artifactId>
-			<version>4.0.0-SNAPSHOT</version>
+			<version>4.14.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
-			<artifactId>socket.io</artifactId>
-			<version>1.4.4-SNAPSHOT</version>
+			<groupId>org.jsweet.candies.ext</groupId>
+			<artifactId>express-errorhandler</artifactId>
+			<version>4.14.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
-			<artifactId>errorhandler</artifactId>
-			<version>0.0.0-SNAPSHOT</version>
+			<groupId>org.jsweet.candies.ext</groupId>
+			<artifactId>express-body-parser</artifactId>
+			<version>4.14.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
-			<artifactId>body-parser</artifactId>
-			<version>0.0.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.candies.ext</groupId>
 			<artifactId>angular-material</artifactId>
-			<version>0.0.0-SNAPSHOT</version>
+			<version>1.1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsweet.candies.ext</groupId>
+			<artifactId>socket.io</artifactId>
+			<version>1.4.5</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
-			<artifactId>polymer</artifactId>
-			<version>1.1.6-SNAPSHOT</version>
+			<groupId>org.jsweet</groupId>
+			<artifactId>jsweet-core</artifactId>
+			<version>6-SNAPSHOT</version>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.jsweet.candies</groupId> -->
-		<!-- <artifactId>gulp</artifactId> -->
-		<!-- <version>3.8.2-SNAPSHOT</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jsweet.candies</groupId> -->
-		<!-- <artifactId>gulp-shell</artifactId> -->
-		<!-- <version>0.0.2-SNAPSHOT</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jsweet.candies</groupId> -->
-		<!-- <artifactId>gulp-uglify</artifactId> -->
-		<!-- <version>0.0.2-SNAPSHOT</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jsweet.candies</groupId> -->
-		<!-- <artifactId>gulp-rename</artifactId> -->
-		<!-- <version>0.0.2-SNAPSHOT</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jsweet.candies</groupId> -->
-		<!-- <artifactId>gulp-minify-css</artifactId> -->
-		<!-- <version>0.0.2-SNAPSHOT</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jsweet.candies</groupId> -->
-		<!-- <artifactId>gulp-plumber</artifactId> -->
-		<!-- <version>0.0.2-SNAPSHOT</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jsweet.candies</groupId> -->
-		<!-- <artifactId>gulp-concat</artifactId> -->
-		<!-- <version>0.0.2-SNAPSHOT</version> -->
-		<!-- </dependency> -->
 	</dependencies>
 </project>

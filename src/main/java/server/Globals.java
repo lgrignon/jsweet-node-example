@@ -20,7 +20,7 @@ import static def.body_parser.body_parser.Globals.urlencoded;
 import static def.errorhandler.Globals.errorhandler;
 import static def.express.Globals.express_lib_express;
 import static def.express.Globals.express_serve_static;
-import static def.js.Globals.console;
+import static def.dom.Globals.console;
 import static def.node.Globals.__dirname;
 import static def.node.Globals.process;
 import static def.node.http.Globals.createServer;

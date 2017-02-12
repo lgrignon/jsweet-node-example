@@ -16,8 +16,8 @@
 package app.controllers;
 
 import static def.jquery.Globals.$;
-import static def.js.Globals.console;
-import static def.js.Globals.localStorage;
+import static def.dom.Globals.console;
+import static def.dom.Globals.localStorage;
 import static jsweet.util.Globals.function;
 
 import java.util.function.BiFunction;

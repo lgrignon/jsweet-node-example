@@ -16,7 +16,7 @@
 package app.controllers;
 
 import static def.jquery.Globals.$;
-import static def.js.Globals.console;
+import static def.dom.Globals.console;
 import static jsweet.util.Globals.$map;
 import static jsweet.util.Globals.function;
 

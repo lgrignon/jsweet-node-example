@@ -1,4 +1,4 @@
-# JSweet Node.js / Socket.IO server + Angular web client example
+# JSweet 2 + Node.js / Socket.IO server + Angular material web client example
 
 <img src="http://www.jsweet.org/wp-content/logos/powered-by-jsweet-simple.svg" width="150" alt="JSweet logo">
 

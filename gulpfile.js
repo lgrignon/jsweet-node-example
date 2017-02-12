@@ -51,7 +51,6 @@ gulp.task('bundleJsVendors', function() {
         'bower_components/ng-socket-io/ng-socket-io.js',
     ])
 
-//        .pipe(plumber())
         .pipe(concat('vendors.js'))
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
@@ -65,7 +64,6 @@ gulp.task('bundleCss', function () {
         'bower_components/angular-material/angular-material.css',
 		'css/style.css',
     ])
-    .pipe(plumber())
     .pipe(minifyCSS())
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest('build/css'))

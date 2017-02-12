@@ -7,3 +7,6 @@
 .generated
 js
 /bin/
+.classpath
+.project
+.settings/

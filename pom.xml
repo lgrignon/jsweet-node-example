@@ -34,7 +34,8 @@
 							<bundle>true</bundle>
 							<bundlesDirectory>build/js/bundles</bundlesDirectory>
 							<outDir>build/js</outDir>
-							<targetVersion>ES6</targetVersion>
+							<tsOut>target/ts/client</tsOut>
+							<targetVersion>ES5</targetVersion>
 							<verbose>true</verbose>
 							<includes>
 								<include>**/app/**/*.java</include>
@@ -75,7 +76,9 @@
 						<configuration>
 							<verbose>true</verbose>
 							<outDir>build</outDir>
-							<targetVersion>ES6</targetVersion>
+							<tsOut>target/ts/server</tsOut>
+							<targetVersion>ES5</targetVersion>
+							<module>commonjs</module>
 							<includes>
 								<include>**/*.java</include>
 							</includes>

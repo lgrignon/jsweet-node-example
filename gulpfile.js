@@ -6,7 +6,8 @@ var gulp     = require('gulp'),
     notify       = require("gulp-notify"),
     jade         = require("gulp-jade"),
     plumber      = require("gulp-plumber"),
-    shell        = require('gulp-shell');
+    shell        = require('gulp-shell'),
+    runSequence  = require('run-sequence');
 
 function onError(error) {
 	console.log('FATAL ERROR: ' + error);
@@ -17,17 +18,23 @@ function onError(error) {
 	process.exit(1);
 }
 
+gulp.task('clean', shell.task([
+	'mvn clean -P server',
+	'mvn clean -P client'
+]));
+
+
 gulp.task('buildServer', shell.task(
-	'mvn clean generate-sources -P server'
+	'mvn generate-sources -P server'
 ));
 
 gulp.task('buildClient', shell.task(
-	'mvn clean generate-sources -P client'
+	'mvn generate-sources -P client'
 ));
 
 gulp.task('buildClientAndServer', shell.task([
-	'mvn clean generate-sources -P server',
-	'mvn clean generate-sources -P client'
+	'mvn generate-sources -P server',
+	'mvn generate-sources -P client'
 ]));
 
 //VENDORS
@@ -46,7 +53,7 @@ gulp.task('bundleJsVendors', function() {
 
         .pipe(plumber())
         .pipe(concat('vendors.js'))
-        .pipe(uglify())
+//        .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('build/js/'))
         .pipe(notify('JavaScript Vendors ready !'))
@@ -96,3 +103,6 @@ gulp.task('images', function() {
 
 gulp.task('static', ['jade', 'bundleJsVendors', 'bundleCss', 'views', 'images']);
 
+gulp.task('all', ['clean'], function (cb) {
+    runSequence(['buildClientAndServer', 'static'], cb);
+});

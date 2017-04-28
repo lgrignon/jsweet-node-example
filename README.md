@@ -39,3 +39,10 @@ Then, one could browse the chat by accessing [http://localhost:1337/](http://loc
 
 The `node` and `npm` executables must be in the path (https://nodejs.org). `bower` and `gulp` should be installed as well.
 Install Maven (https://maven.apache.org/install.html).
+
+## Other node examples
+This example belongs to a suite of examples using JSweet 2 + Node.js:
+* https://github.com/lgrignon/jsweet-node-example
+* https://github.com/lgrignon/jsweet-node-example-simple-http
+* https://github.com/lgrignon/jsweet-node-example-fs
+

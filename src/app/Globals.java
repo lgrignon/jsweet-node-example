@@ -16,10 +16,10 @@
 package app;
 
 import static def.angularjs.Globals.angular;
-import static def.js.Globals.console;
-import static jsweet.util.Globals.array;
-import static jsweet.util.Globals.function;
-import static jsweet.util.Globals.union;
+import static def.dom.Globals.console;
+import static jsweet.util.Lang.array;
+import static jsweet.util.Lang.function;
+import static jsweet.util.Lang.union;
 
 import java.util.function.Consumer;
 

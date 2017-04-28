@@ -15,7 +15,7 @@
  */
 package app.directives;
 
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.union;
 
 import def.angularjs.ng.IAttributes;
 import def.angularjs.ng.IAugmentedJQuery;

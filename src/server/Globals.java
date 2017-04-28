@@ -20,17 +20,17 @@ import static def.body_parser.body_parser.Globals.urlencoded;
 import static def.errorhandler.Globals.errorhandler;
 import static def.express.Globals.express_lib_express;
 import static def.express.Globals.express_serve_static;
-import static def.js.Globals.console;
+import static def.dom.Globals.console;
 import static def.node.Globals.__dirname;
 import static def.node.Globals.process;
 import static def.node.http.Globals.createServer;
 import static def.socket_io.Globals.socket_io;
 import static def.socket_io.StringTypes.connect;
-import static jsweet.util.Globals.function;
-import static jsweet.util.Globals.number;
-import static jsweet.util.Globals.object;
-import static jsweet.util.Globals.any;
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.any;
+import static jsweet.util.Lang.function;
+import static jsweet.util.Lang.number;
+import static jsweet.util.Lang.object;
+import static jsweet.util.Lang.union;
 
 import def.body_parser.body_parser.OptionsDto;
 import def.errorhandler.errorhandler.Options;
@@ -150,14 +150,14 @@ public class Globals {
 		Server server = createServer((IncomingMessage msg, ServerResponse resp) -> {
 			console.log("server received request - url=" + msg.url + " method=" + msg.method);
 			RequestHandler delegate = any(app);
-			delegate.apply(any(msg), any(resp), null);
+			delegate.$apply(any(msg), any(resp), null);
 		});
 
 		server.listen(app.get("port"), function(() -> {
 			console.log("server listening on port [" + app.get("port") + "]");
 		}));
 
-		def.socket_io.socketio.Server ioServer = socket_io.listen.apply(server);
+		def.socket_io.socketio.Server ioServer = socket_io.listen.$apply(server);
 
 		Object users = new Object();
 		Array<Message> messages = new Array<>();

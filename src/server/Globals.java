@@ -174,7 +174,7 @@ public class Globals {
 
 			// refresh all available users
 			int usersCount = Object.keys(users).length;
-			for (String userIp : Object.keys(users)) {
+			for (def.js.String userIp : Object.keys(users)) {
 				socket.emit("newuser", users.$get(userIp), usersCount);
 			}
 
@@ -201,7 +201,7 @@ public class Globals {
 			socket.on("request:loggedUsers", function(() -> {
 				console.info("requesting logged user... sending");
 				int i = 0;
-				for (String userIp : Object.keys(users)) {
+				for (def.js.String userIp : Object.keys(users)) {
 					socket.emit("newuser", users.$get(userIp), ++i);
 				}
 			}));

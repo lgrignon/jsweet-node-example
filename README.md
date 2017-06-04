@@ -30,7 +30,7 @@ The output folder is `build`.
 Once built: 
 ```
 > cd build
-> node server/module.js
+> node server/Globals.js
 ```
 
 Then, one could browse the chat by accessing [http://localhost:1337/](http://localhost:1337/) in a browser.

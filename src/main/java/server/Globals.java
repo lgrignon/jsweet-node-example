@@ -26,11 +26,12 @@ import static def.node.Globals.process;
 import static def.node.http.Globals.createServer;
 import static def.socket_io.Globals.socket_io;
 import static def.socket_io.StringTypes.connect;
-import static jsweet.util.Globals.any;
-import static jsweet.util.Globals.function;
-import static jsweet.util.Globals.number;
-import static jsweet.util.Globals.object;
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.any;
+import static jsweet.util.Lang.function;
+import static jsweet.util.Lang.number;
+import static jsweet.util.Lang.object;
+import static jsweet.util.Lang.string;
+import static jsweet.util.Lang.union;
 
 import def.body_parser.body_parser.OptionsDto;
 import def.errorhandler.errorhandler.Options;
@@ -52,8 +53,8 @@ import model.Message;
 import model.User;
 
 /**
- * Typing interface for socket connection / request. Since API is not
- * "typed enough", we define additional interfaces in order to be safe.
+ * Typing interface for socket connection / request. Since API is not "typed
+ * enough", we define additional interfaces in order to be safe.
  * 
  * @author Louis Grignon
  *
@@ -83,7 +84,7 @@ abstract class SocketRequest {
 public class Globals {
 
 	public static void main(String[] args) {
-		
+
 		console.log("running server");
 
 		Application app = express_lib_express();
@@ -148,14 +149,14 @@ public class Globals {
 		Server server = createServer((IncomingMessage msg, ServerResponse resp) -> {
 			console.log("server received request - url=" + msg.url + " method=" + msg.method);
 			RequestHandler delegate = any(app);
-			delegate.apply(any(msg), any(resp), null);
+			delegate.$apply(any(msg), any(resp), null);
 		});
 
 		server.listen(app.get("port"), function(() -> {
 			console.log("server listening on port [" + app.get("port") + "]");
 		}));
 
-		def.socket_io.socketio.Server ioServer = socket_io.listen.apply(server);
+		def.socket_io.socketio.Server ioServer = socket_io.listen.$apply(server);
 
 		Object users = new Object();
 		Array<Message> messages = new Array<>();
@@ -172,7 +173,7 @@ public class Globals {
 
 			// refresh all available users
 			int usersCount = Object.keys(users).length;
-			for (String userIp : Object.keys(users)) {
+			for (def.js.String userIp : Object.keys(users)) {
 				socket.emit("newuser", users.$get(userIp), usersCount);
 			}
 
@@ -199,7 +200,7 @@ public class Globals {
 			socket.on("request:loggedUsers", function(() -> {
 				console.info("requesting logged user... sending");
 				int i = 0;
-				for (String userIp : Object.keys(users)) {
+				for (def.js.String userIp : Object.keys(users)) {
 					socket.emit("newuser", users.$get(userIp), ++i);
 				}
 			}));
@@ -232,7 +233,8 @@ public class Globals {
 	}
 
 	private static String s4() {
-		return number(Math.floor((1 + Math.random()) * 0x10000)).toString(16).substring(1);
+		def.js.String s4 = number(Math.floor((1 + Math.random()) * 0x10000)).toString(16).substring(1);
+		return string(s4);
 	}
 
 	private static String guid() {

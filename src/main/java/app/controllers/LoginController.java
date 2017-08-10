@@ -17,8 +17,8 @@ package app.controllers;
 
 import static def.jquery.Globals.$;
 import static def.dom.Globals.console;
-import static jsweet.util.Globals.$map;
-import static jsweet.util.Globals.function;
+import static jsweet.util.Lang.$map;
+import static jsweet.util.Lang.function;
 
 import java.util.function.Function;
 

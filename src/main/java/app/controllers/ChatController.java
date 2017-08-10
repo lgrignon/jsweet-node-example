@@ -18,7 +18,7 @@ package app.controllers;
 import static def.jquery.Globals.$;
 import static def.dom.Globals.console;
 import static def.dom.Globals.localStorage;
-import static jsweet.util.Globals.function;
+import static jsweet.util.Lang.function;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -65,7 +65,9 @@ public class ChatController extends AbstractController {
 
 	private void init() {
 		Function<IScope, Array<Message>> watchMessages = ($scope) -> this.messages;
-		this.$scope.$watchCollection(watchMessages, this::onMessagesChanged);
+		this.$scope.$watchCollection(watchMessages, (oldVal, newVal, $scope) -> {
+			return this.onMessagesChanged((Array<Message>) oldVal, (Array<Message>) newVal, $scope);
+		});
 
 		$("#messageForm").submit(this::sendMessage);
 

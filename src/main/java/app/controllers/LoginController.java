@@ -20,6 +20,7 @@ import static def.dom.Globals.console;
 import static jsweet.util.Lang.$map;
 import static jsweet.util.Lang.function;
 
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 import def.angularjs.ng.ILocationService;
@@ -49,7 +50,8 @@ public class LoginController {
 		console.log("initializing LoginController - connected=", this.socket.connected, this.socket);
 		$("#loginForm").submit(this::attemptLogin);
 
-		this.socket.on("newuser", function((User user, Number usersCount) -> this.refreshCount(usersCount)));
+		BiConsumer<User, Number> onNewUser = (User user, Number usersCount) -> this.refreshCount(usersCount);
+		this.socket.on("newuser", function(onNewUser));
 
 		Function<User, Void> onUserLogged = this::welcomeUser;
 		this.socket.on("login:success", function(onUserLogged));
@@ -66,10 +68,9 @@ public class LoginController {
 
 		if (event != null) {
 			event.preventDefault();
-			this.socket.emit("login:attempt",
-					$map( //
-							"name", $("#username").val(), //
-							"password", $("#password").val()));
+			this.socket.emit("login:attempt", $map( //
+					"name", $("#username").val(), //
+					"password", $("#password").val()));
 		}
 
 		return null;

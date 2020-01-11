@@ -1,4 +1,4 @@
-# JSweet 2 + Node.js / Socket.IO server + Angular material web client example
+# JSweet 3 + Node.js / Socket.IO server + Angular material web client example
 
 <img src="http://www.jsweet.org/wp-content/logos/powered-by-jsweet-simple.svg" width="150" alt="JSweet logo">
 
@@ -17,9 +17,9 @@ Just build it using Gulp:
 > git clone https://github.com/lgrignon/jsweet-node-example.git
 > cd jsweet-node-example
 > npm install
-> bower install
-> gulp buildClientAndServer
-> gulp static
+> npx bower install
+> npx gulp buildClientAndServer
+> npx gulp static
 ```
 
 `gulp buildClientAndServer` executes behind the scene `gulp buildServer` and `gulp buildClient`, which runs respectively `mvn generate-sources -P server` and `mvn generate-sources -P client`.

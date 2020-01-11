@@ -201,7 +201,7 @@
 		<dependency>
 			<groupId>org.jsweet</groupId>
 			<artifactId>jsweet-core</artifactId>
-			<version>5-20170726</version>
+			<version>${jsweet.core.version}</version>
 		</dependency>
 
 	</dependencies>

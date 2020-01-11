@@ -233,8 +233,8 @@ public class Globals {
 	}
 
 	private static String s4() {
-		def.js.String s4 = number(Math.floor((1 + Math.random()) * 0x10000)).toString(16).substring(1);
-		return string(s4);
+		String s4 = number(Math.floor((1 + Math.random()) * 0x10000)).toString(16).substring(1);
+		return s4;
 	}
 
 	private static String guid() {
